@@ -1,6 +1,11 @@
 import { useEffect } from "react";
 import { useMoralis } from "react-moralis";
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
 import Account from "components/Account/Account";
 import Chains from "components/Chains";
 import TokenPrice from "components/TokenPrice";
@@ -51,11 +56,13 @@ const styles = {
   },
 };
 const App = ({ isServerInfo }) => {
-  const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading } = useMoralis();
+  const { isWeb3Enabled, enableWeb3, isAuthenticated, isWeb3EnableLoading } =
+    useMoralis();
 
   useEffect(() => {
     const connectorId = window.localStorage.getItem("connectorId");
-    if (isAuthenticated && !isWeb3Enabled && !isWeb3EnableLoading) enableWeb3({ provider: connectorId });
+    if (isAuthenticated && !isWeb3Enabled && !isWeb3EnableLoading)
+      enableWeb3({ provider: connectorId });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isAuthenticated, isWeb3Enabled]);
 
@@ -80,6 +87,7 @@ const App = ({ isServerInfo }) => {
 
         <div style={styles.content}>
           <Switch>
+            {/* 
             <Route exact path="/quickstart">
               <QuickStart isServerInfo={isServerInfo} />
             </Route>
@@ -108,9 +116,18 @@ const App = ({ isServerInfo }) => {
             <Route path="/erc20transfers">
               <ERC20Transfers />
             </Route>
+            */}
             <Route path="/nftBalance">
               <NFTBalance />
             </Route>
+            <Route path="/nftMarket">
+              <NFTBalance />
+            </Route>
+            <Route path="/transaction">
+              <NFTBalance />
+            </Route>
+            <Redirect to="/nftBalance" />
+            {/* 
             <Route path="/contract">
               <Contract />
             </Route>
@@ -123,13 +140,18 @@ const App = ({ isServerInfo }) => {
             <Route path="/nonauthenticated">
               <>Please login using the "Authenticate" button</>
             </Route>
+            */}
           </Switch>
         </div>
       </Router>
       <Footer style={{ textAlign: "center" }}>
         <Text style={{ display: "block" }}>
           ⭐️ Please star this{" "}
-          <a href="https://github.com/ethereum-boilerplate/ethereum-boilerplate/" target="_blank" rel="noopener noreferrer">
+          <a
+            href="https://github.com/ethereum-boilerplate/ethereum-boilerplate/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             boilerplate
           </a>
           , every star makes us very happy!
@@ -137,7 +159,11 @@ const App = ({ isServerInfo }) => {
 
         <Text style={{ display: "block" }}>
           🙋 You have questions? Ask them on the {""}
-          <a target="_blank" rel="noopener noreferrer" href="https://forum.moralis.io/t/ethereum-boilerplate-questions/3951/29">
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://forum.moralis.io/t/ethereum-boilerplate-questions/3951/29"
+          >
             Moralis forum
           </a>
         </Text>
@@ -159,7 +185,13 @@ const App = ({ isServerInfo }) => {
 
 export const Logo = () => (
   <div style={{ display: "flex" }}>
-    <svg width="60" height="38" viewBox="0 0 50 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg
+      width="60"
+      height="38"
+      viewBox="0 0 50 38"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
       <path
         d="M43.6871 32.3986C43.5973 32.4884 43.53 32.5782 43.4402 32.6905C43.53 32.6007 43.5973 32.5109 43.6871 32.3986Z"
         fill="black"
