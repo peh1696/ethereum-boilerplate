@@ -12,7 +12,7 @@ export const useNFTTokenIds = (addr, limit = 100) => {
   const { resolveLink } = useIPFS();
   const getAllTokenIdsOpts = {
       chain: chainId,
-      address: "0xb47e3cd837dDF8e4c57F05d70Ab865de6e193BBB",//addr,
+      address: addr,
       limit: limit,
   };
 
